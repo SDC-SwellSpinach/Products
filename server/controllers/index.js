@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
       console.log(err);
       res.status(400).send(err);
     } else {
-      console.log(data);
       res.status(200).send(data.rows);
     }
   });
@@ -21,7 +20,6 @@ router.get('/:id', (req, res) => {
       console.log(err);
       res.status(400).send(err);
     } else {
-      console.log(data);
       res.status(200).send(data.rows);
     }
   });
@@ -33,7 +31,6 @@ router.get('/:id/styles', (req, res) => {
       console.log(err);
       res.status(400).send(err);
     } else {
-      console.log(data);
       const result = {
         product_id: req.params.id,
         results: data.rows,
@@ -49,7 +46,6 @@ router.get('/:id/related', (req, res) => {
       console.log(err);
       res.status(400).send(err);
     } else {
-      console.log(data);
       res.status(200).send(data.rows[0].related);
     }
   });

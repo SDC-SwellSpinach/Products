@@ -15,3 +15,5 @@ const PORT = process.env.PORT || 3000; // <-- 8080 is also common
 app.listen(PORT, () => {
   console.log(`Server available at http://localhost${PORT}`);
 });
+
+module.exports = app;

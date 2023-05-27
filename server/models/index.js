@@ -36,8 +36,8 @@ const getProduct = (id, callback) => {
 const getStyles = (id, callback) => {
   db.query(
     `SELECT styles.style_id, styles.name, original_price, sale_price, "default?",
-    json_agg(json_build_object('thumbnail_url', photos.thumbnail_url, 'url', photos.url)) AS photos,
-    json_object_agg(skus.id, json_build_object('quantity', skus.quantity, 'size', skus.size)) AS skus
+    jsonb_agg(jsonb_build_object('thumbnail_url', photos.thumbnail_url, 'url', photos.url)) AS photos,
+    jsonb_object_agg(skus.id, jsonb_build_object('quantity', skus.quantity, 'size', skus.size)) AS skus
     FROM products
     LEFT JOIN styles ON products.id = styles.productId
     LEFT JOIN photos ON styles.style_id = photos.styleId
@@ -57,7 +57,7 @@ const getStyles = (id, callback) => {
 
 const getRelated = (id, callback) => {
   db.query(
-    `SELECT json_agg(related.related_product_id) AS related
+    `SELECT jsonb_agg(related.related_product_id) AS related
     FROM products
     LEFT JOIN related ON products.id = related.current_product_id
     WHERE products.id = ${id}
