@@ -23,3 +23,5 @@ lib-cov
 
 # Coverage directory used by tools like Jest/istanbul
 coverage
+
+csv/
