@@ -1,8 +1,9 @@
 const db = require('../db/index');
 
-const getProducts = (callback) => {
+const getProducts = (page, count, callback) => {
+  const offset = page * count - count;
   db.query(
-    'SELECT * FROM products WHERE id = 1',
+    `SELECT * FROM products LIMIT ${count} OFFSET ${offset}`,
     (err, results) => {
       if (err) {
         console.log(err);
@@ -16,12 +17,8 @@ const getProducts = (callback) => {
 
 const getProduct = (id, callback) => {
   db.query(
-    `SELECT products.id, name, slogan, description, category, default_price,
-    json_agg(json_build_object('feature', features.feature, 'value', features.value)) AS features
-    FROM products
-    LEFT JOIN features ON products.id = features.product_id
-    WHERE products.id = ${id}
-    GROUP BY products.id, products.name`,
+    `SELECT * FROM product_features
+    WHERE product_features.id = ${id}`,
     (err, results) => {
       if (err) {
         console.log(err);
@@ -35,15 +32,8 @@ const getProduct = (id, callback) => {
 
 const getStyles = (id, callback) => {
   db.query(
-    `SELECT styles.style_id, styles.name, original_price, sale_price, "default?",
-    jsonb_agg(jsonb_build_object('thumbnail_url', photos.thumbnail_url, 'url', photos.url)) AS photos,
-    jsonb_object_agg(skus.id, jsonb_build_object('quantity', skus.quantity, 'size', skus.size)) AS skus
-    FROM products
-    LEFT JOIN styles ON products.id = styles.productId
-    LEFT JOIN photos ON styles.style_id = photos.styleId
-    LEFT JOIN skus ON styles.style_id = skus.style_id
-    WHERE products.id = ${id}
-    GROUP BY styles.style_id, styles.name`,
+    `SELECT * FROM style_photo_skus
+    WHERE style_photo_skus.productId = ${id}`,
     (err, results) => {
       if (err) {
         console.log(err);
@@ -57,11 +47,8 @@ const getStyles = (id, callback) => {
 
 const getRelated = (id, callback) => {
   db.query(
-    `SELECT jsonb_agg(related.related_product_id) AS related
-    FROM products
-    LEFT JOIN related ON products.id = related.current_product_id
-    WHERE products.id = ${id}
-    GROUP BY products.id`,
+    `SELECT * FROM related_products
+    WHERE related_products.current_product_id = ${id}`,
     (err, results) => {
       if (err) {
         console.log(err);

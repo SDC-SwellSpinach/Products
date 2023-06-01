@@ -4,7 +4,9 @@ const models = require('../models');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  models.getProducts((err, data) => {
+  const page = req.body.page || 1;
+  const count = req.body.count || 5;
+  models.getProducts(page, count, (err, data) => {
     if (err) {
       console.log(err);
       res.status(400).send(err);
