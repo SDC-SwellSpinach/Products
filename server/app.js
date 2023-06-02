@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // loader.io verification
-app.get('/loaderio-b89f317e87a9bf2db4aeea0fe503b8f2', (req, res) => (res.status(200).send('loaderio-b89f317e87a9bf2db4aeea0fe503b8f2')));
+app.get('loaderio-ce42f5c3f2d533b4d6c8cb78efae2d2a', (req, res) => (res.status(200).send('loaderio-ce42f5c3f2d533b4d6c8cb78efae2d2a')));
 
 app.use('/products', controller);
 const PORT = process.env.PORT || 3000;
