@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // loader.io verification
-//app.get('/loaderio-5194118df6ea860d5233465797d7c31a', (req, res) => (res.status(200).send('loaderio-5194118df6ea860d5233465797d7c31a')));
+app.get('/loaderio-5194118df6ea860d5233465797d7c31a', (req, res) => (res.status(200).send('loaderio-5194118df6ea860d5233465797d7c31a')));
 
-app.get('/loaderio-66b95c866bbb20cec52153138587786c', (req, res) => (res.status(200).send('loaderio-66b95c866bbb20cec52153138587786c')));
+// app.get('/loaderio-66b95c866bbb20cec52153138587786c', (req, res) => (res.status(200).send('loaderio-66b95c866bbb20cec52153138587786c')));
 
 app.use('/products', controller);
 const PORT = process.env.PORT || 3000;
