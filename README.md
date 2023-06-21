@@ -15,21 +15,23 @@ The backend architecture utilizes AWS and NGINX to deploy a load balancer with c
 
 ### Performance for a typical load of 1000 clients per second before load balancing and caching.
 
-<img src="./assets/PreOpt.png"/>
+<img src="https://github.com/SDC-SwellSpinach/Products/assets/55962431/faa06fa1-4337-4085-89d0-ccd57611bb14"/>
 </details>
 
 <details><summary>Typical Load Performance Post-Optimization</summary>
 
 ### Performance for a typical load of 1000 clients per second after load balancing and caching.
 
-<img src="./assets/AfterOpt.png"/>
+<img src="https://github.com/SDC-SwellSpinach/Products/assets/55962431/d26316db-bf93-4f13-af47-381d19be68de"/>
+
 </details>
 
-<details><summary>9000 Clients Per Second</summary>
+<details><summary>5000 Clients Per Second</summary>
 
-### Performance for a load of 9000 clients per second.
+### Performance for a load of 5000 clients per second.
 
-<img src="./assets/9000K.png"/>
+<img src="https://github.com/SDC-SwellSpinach/Products/assets/55962431/6b44bf2f-8156-4a4d-8d45-988c28d35ec6"/>
+
 </details>
 
 ## Tech Stack
