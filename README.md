@@ -50,7 +50,7 @@ Products: Sasha Gordin\
 
 1. Clone the repository locally.
 ```
-git clone https://github.com/Guccapi/Reviews-System-Design.git
+git clone [https://github.com/SDC-SwellSpinach/Products.git]
 ```
 
 2. Install the required dependencies.
